@@ -14,7 +14,7 @@ Not wanting to just throw the LEDC68 away, I decided to see if I could do anythi
 Here is the result... a small library of functions and some demo code to show it in action!
 
 + **TM1651.ino**: Demo sketch showing the library functions at work.
-+ **TM1651.h**  : Header file for the function library.
++ **TM1651.h**: Header file for the function library.
 + **TM1651.cpp**: The library of TM1651 functions.
 
 Now to be fair, there is not a lot that you can do with a 3-digit LED display, but it was fun to work it all out.
