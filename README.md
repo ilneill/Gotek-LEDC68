@@ -1,10 +1,10 @@
 # Gotek-LEDC68
 Using an Old Gotek LEDC68 (TM1651 based) 3-Digit LED Board
 
+_**LEDC68 Front**_  
 ![](Gotek%20LEDC68%20Front.jpg)
 
-_**LEDC68 Rear**_
-
+_**LEDC68 Rear**_  
 ![](Gotek%20LEDC68%20Rear.jpg)
 
 Having recently, like many, upgraded my Gotek drive to use the FlashFloppy firmware, I then went on to do a few hardware mods - including replacing the stock 3-digit LED screen (LEDC68) with a superior OLED screen.
@@ -21,6 +21,8 @@ Now to be fair, there is not a lot that you can do with a 3-digit LED display, b
 
 ## Important information
 The LEDC68 uses a TM1651 chip to address the digits and drive the segments. The TM1651 uses a 2-wire serial interface (clock and data), but despite apearances, it is **not** I2C.
+
+The TM1651 datasheet is also in this archive: **TM1651_V1.1_EN.pdf**
 
 ## The Screen on my Mega and Working
 ![](LEDC68_Working_on_a_Mega.jpg)
