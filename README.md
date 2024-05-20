@@ -20,7 +20,7 @@ Here is the result... a small library of functions and some demo code to show it
 Now to be fair, there is not a lot that you can do with a 3-digit LED display, but it was fun to work it all out.
 
 ## Important information
-The LEDC68 uses a TM1651 chip to address the digits and drive the segments. The TM1651 uses a 2-wire serial interface (clock and data), but despite apearances, it is **not** I2C.
+The LEDC68 uses a TM1651 chip to address the digits and drive the segments. The TM1651 uses a 2-wire serial interface (clock and data), but despite appearances, it is **not** I2C.
 
 The TM1651 datasheet is also in this archive: **TM1651_V1.1_EN.pdf**
 
