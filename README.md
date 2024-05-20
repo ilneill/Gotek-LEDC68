@@ -22,6 +22,9 @@ Now to be fair, there is not a lot that you can do with a 3-digit LED display, b
 ## Important information
 The LEDC68 uses a TM1651 chip to address the digits and drive the segments. The TM1651 uses a 2-wire serial interface (clock and data), but despite appearances, it is **not** I2C.
 
+_**LEDC68 Circuit**_  
+![](LEDC68%20Circuit.png)
+
 The TM1651 datasheet is also in this archive: **TM1651_V1.1_EN.pdf**
 
 ## The Screen on my Mega and Working
