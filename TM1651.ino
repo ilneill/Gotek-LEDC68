@@ -32,6 +32,8 @@ void loop() {
   countDown(999, 1000);
   // A 10 minute timer.
   countXMins(10);
+  // A 10 minute timer with flashing decimal points.
+  countXMinsDP(10);
 }
 
 void testDisplay() {
@@ -105,6 +107,35 @@ void countXMins(byte minutesMax) {
       delay(1000);
     }
   }
+}
+
+void countXMinsDP(byte minutesMax) {
+  bool dPoint = false;
+  byte minutes = 0, seconds = 0;
+  unsigned long timeNow, timeMark;
+  timeMark = millis();
+  if(minutesMax > 16) {
+    minutesMax = 16;
+  }
+  do {
+    timeNow = millis();
+    if(timeNow - timeMark >= 500) {
+      timeMark = timeNow;
+      // Toggle the decimal points.
+      myDisplay.displayDP(dPoint);
+      // Increment the time.
+      if(dPoint) {
+        myDisplay.displayChar(0, minutes);
+        myDisplay.displayChar(1, seconds / 10);
+        myDisplay.displayChar(2, seconds % 10);
+        if(++seconds == 60) {
+          seconds = 0;
+          minutes++;
+        }
+      }
+      dPoint = !dPoint;
+    }
+  } while (minutes != minutesMax);
 }
 
 // EOF
