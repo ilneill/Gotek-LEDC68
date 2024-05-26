@@ -1,5 +1,5 @@
 /* Re-Used Gotek LEDC68/TM1651 based 3-digit LED board demo.
- *  Written for the Arduino Uno/Nano/Mega.
+ * Written for the Arduino Uno/Nano/Mega.
  * (c) Ian Neill 2024
  * GPL(v3) Licence
  *
@@ -18,22 +18,37 @@
 TM1651 myDisplay(CLKPIN, DIOPIN); // Defaults: Brightness = 2, display cleared (all segments OFF), decimal points OFF.
 
 void setup() {
+  Serial.begin(9600);
+  Serial.println("\nDisplay brightness and digit test.");
   testDisplay();
+  delay(1000);
 }
 
 void loop() {
-  // Hex number count 0x00 - 0xFF, 1 count/125ms.
+  // Hex number count 0x00 up, 0 - 0xFF, 1 count/125ms.
+  Serial.println("Demo 1: 8-bit hex count up.");
   countHex8(125);
-  // Hex number count 0x00 - 0xFFF, 1 count/125ms.
+  delay(1000);
+  // Hex number count 0x00 down, 0xFFF - 0, 1 count/125ms.
+  Serial.println("Demo 2: 12-bit hex count up.");
   countHex12(125);
-  // Decimal number count 0 - 999, 1 count/100ms
+  delay(1000);
+  // Decimal number count up, 0 - 999, 1 count/100ms.
+  Serial.println("Demo 3: 999 decimal count up.");
   countUp(999, 100);
-  // Decimal number count 999 - 0, 1 count/1000ms.
-  countDown(999, 1000);
+  delay(1000);
+  // Decimal number countdown, 999 - 0, 1 count/500ms.
+  Serial.println("Demo 4: 999 decimal count down.");
+  countDown(999, 500);
+  delay(1000);
   // A 10 minute timer.
-  countXMins(10);
-  // A 10 minute timer with flashing decimal points.
+  Serial.println("Demo 5: A 5 minute timer.");
+  countXMins(5);
+  delay(1000);
+  // A 10 minute timer with flashing decimal point.
+  Serial.println("Demo 6: A 10 minute timer & flashing decimal point.");
   countXMinsDP(10);
+  delay(1000);
 }
 
 void testDisplay() {
@@ -117,13 +132,13 @@ void countXMinsDP(byte minutesMax) {
   if(minutesMax > 16) {
     minutesMax = 16;
   }
-  do {
+  while (minutes != minutesMax) {
     timeNow = millis();
     if(timeNow - timeMark >= 500) {
       timeMark = timeNow;
-      // Toggle the decimal points.
+      // Update the display decimal point.
       myDisplay.displayDP(dPoint);
-      // Increment the time.
+      // Update the display and increment the time.
       if(dPoint) {
         myDisplay.displayChar(0, minutes);
         myDisplay.displayChar(1, seconds / 10);
@@ -133,9 +148,12 @@ void countXMinsDP(byte minutesMax) {
           minutes++;
         }
       }
+      // Toggle the decimal point flag.
       dPoint = !dPoint;
     }
-  } while (minutes != minutesMax);
+  };
+  // Ensure the decimal point is OFF when the function exits.
+  myDisplay.displayDP(false);
 }
 
 // EOF
