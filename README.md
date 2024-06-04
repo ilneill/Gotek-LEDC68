@@ -38,7 +38,9 @@ The TM1651 datasheet is also in this archive: **TM1651_V1.1_EN.pdf**
 `Demo 3: 999 decimal count up.`  
 `Demo 4: 999 decimal count down.`  
 `Demo 5: A 5 minute delay() timer: 301132ms`  
-`Demo 6: A 10 minute millis() timer & flashing decimal point: 600003ms`  
+`Demo 6: A 10 minute millis() timer & flashing decimal point: 600002ms`  
+`Demo 1: 8-bit hex count up.`  
+...etc.
 
 It is interesting to see how quickly the simple 5 minute (delay() function) timer drifts!
 
