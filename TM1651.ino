@@ -25,6 +25,8 @@ void setup() {
 }
 
 void loop() {
+  // Used to time the 5 and 10 min delay demos.
+  unsigned long timeNow;
   // Hex number count 0x00 up, 0 - 0xFF, 1 count/125ms.
   Serial.println("Demo 1: 8-bit hex count up.");
   countHex8(125);
@@ -42,12 +44,18 @@ void loop() {
   countDown(999, 500);
   delay(1000);
   // A 10 minute timer.
-  Serial.println("Demo 5: A 5 minute timer.");
+  Serial.print("Demo 5: A 5 minute delay() timer: ");
+  timeNow = millis();
   countXMins(5);
+  Serial.print(millis() - timeNow);
+  Serial.println("ms");
   delay(1000);
   // A 10 minute timer with flashing decimal point.
-  Serial.println("Demo 6: A 10 minute timer & flashing decimal point.");
+  Serial.print("Demo 6: A 10 minute millis() timer & flashing decimal point: ");
+  timeNow = millis();
   countXMinsDP(10);
+  Serial.print(millis() - timeNow);
+  Serial.println("ms");
   delay(1000);
 }
 
@@ -125,14 +133,14 @@ void countXMins(byte minutesMax) {
 }
 
 void countXMinsDP(byte minutesMax) {
-  bool dPoint = false;
+  bool dPoint = true;
   byte minutes = 0, seconds = 0;
   unsigned long timeNow, timeMark;
   timeMark = millis();
   if(minutesMax > 16) {
     minutesMax = 16;
   }
-  while (minutes != minutesMax) {
+  while (minutes != minutesMax || !dPoint) {
     timeNow = millis();
     if(timeNow - timeMark >= 500) {
       timeMark = timeNow;
@@ -152,8 +160,6 @@ void countXMinsDP(byte minutesMax) {
       dPoint = !dPoint;
     }
   };
-  // Ensure the decimal point is OFF when the function exits.
-  myDisplay.displayDP(false);
 }
 
 // EOF
