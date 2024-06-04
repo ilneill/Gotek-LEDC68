@@ -30,6 +30,18 @@ The TM1651 datasheet is also in this archive: **TM1651_V1.1_EN.pdf**
 ## The Screen on my Mega and Working
 ![](LEDC68_Working_on_a_Mega.jpg)
 
+**Captured Serial Output**
+
+`Display brightness and digit test.`  
+`Demo 1: 8-bit hex count up.`  
+`Demo 2: 12-bit hex count up.`  
+`Demo 3: 999 decimal count up.`  
+`Demo 4: 999 decimal count down.`  
+`Demo 5: A 5 minute delay() timer: 301132ms`  
+`Demo 6: A 10 minute millis() timer & flashing decimal point: 600003ms`  
+
+It is interesting to see how quickly the simple 5 minute (delay() function) timer drifts!
+
 ## References
 Built on work by Derek Cooper. Thank you for the jump start!
 + https://www.instructables.com/Re-use-LEDC86-Old-Gotek-Display/
